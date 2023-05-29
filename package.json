@@ -1,0 +1,22 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "self create server",
+  "main": "index.js",
+  "scripts": {
+    "start:server": "nodemon ./bin/www.js"
+  },
+  "author": "ha",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^2.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.3",
+    "fs-extra": "^11.1.1",
+    "multer": "*",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}

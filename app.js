@@ -11,7 +11,7 @@ const userInfoRouter = require('./routers/userInfo')
 const uploadRouter = require('./routers/multer/upload')
 const resetPasswordRouter = require('./routers/resetPassword')
 const { auth } = require('./middleware/auth')
-const { port } = require('./utils/commonData')
+const { port } = require('./utils/globalData')
 const app = express()
 
 // 开启静态资源服务

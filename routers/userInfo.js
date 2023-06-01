@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const dbQueryPromise = require('../db/dbOperation')
-const { imgPath, BaseURL } = require('../utils/commonData')
+const { imgPath, BaseURL } = require('../utils/globalData')
 
 router.use((req, res, next) => {
   next()

@@ -1,8 +1,8 @@
 // 创建mysql连接，这里连接到phpamdin的数据库
 module.exports = {
-  host: 'localhost', // 
-  port: '3306', // 端口
-  database: 'test', // 数据库名称
-  user: 'root', // mysql用户名称
-  password: 'rootroot123', // 
+  host: 'localhost', // 生产也是该地址
+  port: '3306',
+  database: 'test',
+  user: 'root',
+  password: 'rootroot123',
 }

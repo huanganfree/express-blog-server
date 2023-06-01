@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const multerConfig = require('./multerConfig')
-const { imgPath, BaseURL } = require('../../utils/commonData')
+const { imgPath, BaseURL } = require('../../utils/globalData')
 // const fse = require('fs-extra')
 // const path = require('path') 
 const dbQueryPromise = require('../../db/dbOperation')

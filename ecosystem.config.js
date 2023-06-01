@@ -1,7 +1,8 @@
 module.exports = {
   apps: [{
-    name: "app1",
+    name: "app",
     script: "./app.js",
+    watch: true,
     env_development: {
       "baseURL": "localhost",
       "database": "root123456",

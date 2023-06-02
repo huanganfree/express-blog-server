@@ -1,16 +1,18 @@
 module.exports = {
   apps: [{
     name: "app",
-    script: "./app.js",
+    script: "./bin/www.js",
     watch: true,
     env_development: {
       "baseURL": "localhost",
-      "database": "root123456",
-      "NODE_ENV": "development"
+      "databaseP": "root123456",
+      "port": 8080,
+      "NODE_ENV": "development",
     },
     env_production: {
       "baseURL": "114.55.238.107",
-      "database": "rootroot123",
+      "databaseP": "rootroot123",
+      "port": 81,
       "NODE_ENV": "production",
     }
   }]

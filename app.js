@@ -5,6 +5,8 @@
  */
 const express = require('express')
 const expressSession = require('express-session')
+const MemoryStore = require('memorystore')(expressSession)
+
 const userRouter = require('./routers/user')
 const aboutRouter = require('./routers/about')
 const userInfoRouter = require('./routers/userInfo')
@@ -22,7 +24,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // 所有的路由，统一配置cors
 app.use(function (req, res, next) {
-  res.set('Access-Control-Allow-Origin',  req.get('Origin'))
+  res.set('Access-Control-Allow-Origin', req.get('Origin'))
   res.set("Access-Control-Allow-Headers", "Content-Type,Access-Token") // 必须设置
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -31,14 +33,17 @@ app.use(function (req, res, next) {
 
 app.use(expressSession({
   secret: 'sessiontest',
-  resave: true,
-  saveUninitialized:true, 
-  cookie: { maxAge: 1000 * 60 * 60 }
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 1000 * 60 * 60 * 2 },
+  store: new MemoryStore({
+    checkPeriod: 1000 * 60 * 60 * 2
+  }),
 }));
 
 app.use('/user', userRouter)
 
-app.use(auth, [aboutRouter, uploadRouter,userInfoRouter, resetPasswordRouter])
+app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter])
 
 app.listen(port, () => {
   console.log('process.env==', process.env);

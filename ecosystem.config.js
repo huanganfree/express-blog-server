@@ -6,7 +6,7 @@ module.exports = {
     env_development: {
       "baseURL": "localhost",
       "databaseP": "root123456",
-      "port": 8080,
+      "port": 8000,
       "NODE_ENV": "development",
     },
     env_production: {

@@ -4,5 +4,5 @@ module.exports = {
   port: '3306',
   database: 'test',
   user: 'root',
-  password: process.env.databaseP,
+  password: 'root',
 }

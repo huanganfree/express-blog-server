@@ -1,6 +1,6 @@
-const port = process.env.port
+const port = 8000
 // 上传到服务器地址
-const BaseURL = "http://" + process.env.baseURL + ":"+ port
+const BaseURL = "http://" + 'localhost' + ":"+ port
 // 图片上传到服务器的目录
 const imgPath = '/public/'
 

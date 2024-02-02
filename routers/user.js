@@ -8,6 +8,7 @@ router.use((req, res, next) => {
 
 router.post('/login', function(req, res) {
   const { username, password } = req.body || {}
+  console.log(username, password);
   dbQueryPromise(`SELECT * FROM user WHERE username='${username}'`) //mysql中间件无法识别传入参数
     .then((results) => {
       console.log('results-login==', results);

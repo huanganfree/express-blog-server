@@ -46,7 +46,6 @@ app.use('/user', userRouter)
 app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter])
 
 app.listen(port, () => {
-  console.log('process.env==', process.env);
   console.log(`server is running in ${port}!`);
 })
 

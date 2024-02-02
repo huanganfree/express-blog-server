@@ -2,7 +2,7 @@
 module.exports = {
   host: 'localhost', // 生产也是该地址
   port: '3306',
-  database: 'test',
+  database: 'express_blog_server',
   user: 'root',
   password: 'rootHA@',
 }

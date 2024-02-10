@@ -8,7 +8,7 @@ router.use((req, res, next) => {
 
 router.get('/about', function(req, res) {
   console.log(req.session.userId);
-  dbQueryPromise(`SELECT * FROM about WHERE user_id='${req.session.userId}'`) //mysql中间件无法识别传入参数
+  dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}'`) //mysql中间件无法识别传入参数
     .then((results) => {
       res.json({
         code: 200,

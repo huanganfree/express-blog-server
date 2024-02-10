@@ -26,7 +26,7 @@ function uploadAvatar(req, res) {
         .then((results) => {
           console.log('results--UPDATE user SET', results);
           res.json({
-            code: 200,
+            code: 200, 
             data: BaseURL + imgPath + req.file.filename,
             message: '上传成功'
           })

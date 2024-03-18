@@ -1,2 +1,2 @@
 # express-blog-server
-node+express+mysql
+node+express+mysql+pm2

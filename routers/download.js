@@ -5,14 +5,13 @@ const path = require('path');
 
 router.get('/download', (req, res) => {
     // 构建静态资源路径
-    const staticPath = path.join(__dirname, '../public', '1749374573930.pdf');
+    const staticPath = path.join(__dirname, '../public', req.query.fileName);
 
     const filePath = staticPath
     // 检查文件是否存在
-    // if (!fs.existsSync(req.query.url)) {
-    //     debugger
-    //     return res.status(404).send('File not found');
-    // }
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).send('File not found');
+    }
 
     // 获取文件信息（主要用于设置Content-Length头部）
     const stat = fs.statSync(filePath);

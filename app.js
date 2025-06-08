@@ -11,6 +11,7 @@ const userRouter = require('./routers/user')
 const aboutRouter = require('./routers/about')
 const userInfoRouter = require('./routers/userInfo')
 const uploadRouter = require('./routers/multer/upload')
+const downloadRouter = require('./routers/download')
 const resetPasswordRouter = require('./routers/resetPassword')
 const { auth } = require('./middleware/auth')
 const { port } = require('./utils/globalData')
@@ -42,6 +43,8 @@ app.use(expressSession({
 }));
 
 app.use('/user', userRouter)
+
+app.get('/download', downloadRouter)
 
 app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter])
 

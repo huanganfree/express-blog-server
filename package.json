@@ -4,7 +4,7 @@
   "description": "self create server",
   "main": "index.js",
   "scripts": {
-    "start:server": "nodemon ./bin/www.js"
+    "start:server": "nodemon --inspect ./bin/www.js"
   },
   "author": "ha",
   "license": "ISC",

@@ -44,9 +44,9 @@ app.use(expressSession({
 
 app.use('/user', userRouter)
 
-app.get('/download', downloadRouter)
+// app.get('/download', downloadRouter)
 
-app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter])
+app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter, downloadRouter])
 
 app.listen(port, () => {
   console.log(`server is running in ${port}!`);

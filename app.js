@@ -44,8 +44,8 @@ app.use(expressSession({
 
 app.use('/user', userRouter)
 
-// app.get('/download', downloadRouter)
 
+// 需要校验登录的路由
 app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter, downloadRouter])
 
 app.listen(port, () => {

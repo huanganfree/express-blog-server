@@ -10,10 +10,11 @@ const auth = (req, res, next) => {
   if (userName) {
     next();
   } else {
-    res.json({
-      code: 401,
-      message: '请登录'
-    })
+    res.status(401).end()
+    // res.json({
+    //   code: 401,
+    //   message: '请登录'
+    // })
     next('router')
   }
 }

@@ -6,15 +6,14 @@
  */
 const auth = (req, res, next) => {
   const userName = req.session.username;
-  console.log('req.session-auth-==', req.session);
+  console.log('userName==', userName);
   if (userName) {
     next();
   } else {
-    res.status(401).end()
-    // res.json({
-    //   code: 401,
-    //   message: '请登录'
-    // })
+    res.json({
+      code: 401,
+      message: '请登录'
+    })
     next('router')
   }
 }

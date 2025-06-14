@@ -9,7 +9,7 @@ router.use((req, res, next) => {
 
 router.get('/about', async function(req, res) {
   console.log(req.session.userId);
-  const total = await dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}'`)
+  const allResults = await dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}'`)
   const offset = (+req.query.pageSize) * (req.query.pageNum - 1)
   const limit = +req.query.pageSize
   // 分页查询
@@ -20,7 +20,7 @@ router.get('/about', async function(req, res) {
         message: '成功',
         data: {
           records: results || [],
-          total: total.length || 0,
+          total: allResults.length || 0,
         }
       })
     })
@@ -32,21 +32,17 @@ router.get('/about', async function(req, res) {
     })
 })
 
-router.get('/about/search', async function(req, res) {
-  console.log(req.session.userId);
-  const total = await dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}'`)
-  const offset = (+req.query.pageSize) * (req.query.pageNum - 1)
-  const limit = +req.query.pageSize
-  // 分页查询
-  dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}' ORDER BY id LIMIT ${limit} OFFSET ${offset}`) //mysql中间件无法识别传入参数
+router.post('/about/search', async function(req, res) {
+  const { keyWords,pageSize, pageNum} = req.body || {}
+  const offset = 0
+  const limit = (+pageSize) * (pageNum)
+  // const results = await dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}' ORDER BY id LIMIT ${limit} OFFSET ${offset}`)
+  dbQueryPromise(`SELECT * FROM user_profile WHERE user_id='${req.session.userId}' AND article LIKE '%${keyWords}%' ORDER BY id LIMIT ${limit} OFFSET ${offset}`) //mysql中间件无法识别传入参数
     .then((results) => {
       res.json({
         code: 200,
         message: '成功',
-        data: {
-          records: results || [],
-          total: total.length || 0,
-        }
+        data: results
       })
     })
     .catch(err => {

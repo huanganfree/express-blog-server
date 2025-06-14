@@ -5,6 +5,7 @@
  */
 const express = require('express')
 const expressSession = require('express-session')
+const cors = require('cors');
 const MemoryStore = require('memorystore')(expressSession)
 
 const userRouter = require('./routers/user')
@@ -32,13 +33,14 @@ app.use(function (req, res, next) {
   next()
 })
 
+
 app.use(expressSession({
   secret: 'sessiontest',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 1000 * 60 * 60 * 2 },
+  cookie: { maxAge: 1000 * 60 * 60 * 1 },
   store: new MemoryStore({
-    checkPeriod: 1000 * 60 * 60 * 2
+    checkPeriod: 1000 * 60 * 60 * 1
   }),
 }));
 

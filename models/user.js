@@ -24,5 +24,8 @@ const User = sequelize.define('user', {
         defaultValue: ''
     },
 }, {
-    freezeTableName: true
+    freezeTableName: true,
+    timestamps: false,
 });
+
+module.exports = User;

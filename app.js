@@ -54,3 +54,5 @@ app.listen(port, () => {
   console.log(`server is running in ${port}!`);
 })
 
+
+module.exports = app // 导出app对象，便于测试

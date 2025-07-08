@@ -1,2 +1,3 @@
 # express-blog-server
-node+express+mysql+pm2
+## 技术栈
+node+express+mysql+sequelize+pm2

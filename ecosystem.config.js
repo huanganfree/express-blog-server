@@ -9,7 +9,7 @@ module.exports = {
       "port": 8000,
       "NODE_ENV": "development",
     },
-    env_production: {
+    env_production: { 
       "baseURL": "114.55.238.107",
       "databaseP": "rootroot123",
       "port": 81,

@@ -5,15 +5,17 @@ module.exports = {
     watch: true,
     env_development: {
       "baseURL": "localhost",
-      "databaseP": "root123456",
       "port": 8000,
       "NODE_ENV": "development",
+      "databaseUser": "root",
+      "databasePassword": "rootHA@",
     },
     env_production: {
-      "baseURL": "114.55.238.107",
-      "databaseP": "rootroot123",
+      "baseURL": "120.26.94.24",
       "port": 81,
       "NODE_ENV": "production",
+      "databaseUser": "root",
+      "databasePassword": "rootHA123@",
     }
   }]
 }

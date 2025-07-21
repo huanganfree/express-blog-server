@@ -4,7 +4,9 @@
   "description": "self create server",
   "main": "index.js",
   "scripts": {
-    "start:server": "nodemon --inspect ./bin/www.js"
+    "start:server": "nodemon --inspect ./bin/www.js",
+    "pm2:development": "pm2 start ecosystem.config.js --env development",
+    "pm2:production": "pm2 start ecosystem.config.js --env production"
   },
   "author": "ha",
   "license": "ISC",

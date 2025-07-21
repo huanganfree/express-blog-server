@@ -1,8 +1,9 @@
-// 创建mysql连接，这里连接到phpamdin的数据库（这里的数据库是老电脑上装的）
+// 连接到本地的mysql数据库
+// 这里的配置是为了连接到本地的mysql数据库
 module.exports = {
-  host: 'localhost', // 生产也是该地址
+  host: 'localhost', // 生产和开发环境都是该地址
   port: '3306',
   database: 'express_blog_server',
   user: 'root',
-  password: 'rootHA@',
+  password: 'rootHA123@',
 }

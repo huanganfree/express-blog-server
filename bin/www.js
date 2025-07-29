@@ -1,2 +1,2 @@
 require('../app')
-require('../models/index')
+// require('../models/index')

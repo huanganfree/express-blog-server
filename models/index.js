@@ -1,13 +1,13 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('express_blog_server', 'root', 'rootHA@', {
+const sequelize = new Sequelize('express_blog_server',process.env.databaseUser, process.env.databasePassword, {
   host: 'localhost',
   dialect: 'mysql'
 });
 
 async function testConnectDatabase() {
-    await sequelize.authenticate();
-    console.log('test === Connection has been established successfully.');
+  await sequelize.authenticate();
+  console.log('test === Connection has been established successfully.');
 }
 
 try {

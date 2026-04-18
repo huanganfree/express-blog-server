@@ -2,44 +2,36 @@ const express = require('express')
 const router = express.Router()
 const dbQueryPromise = require('../db/dbOperation')
 const { imgPath, BaseURL } = require('../utils/globalData')
+const User = require('../models/user')
 
 router.use((req, res, next) => {
   next()
 })
 
-router.get('/userInfo', function(req, res) {
+router.get('/userInfo', async function (req, res) {
   const userId = req.session.userId
-  dbQueryPromise(`SELECT * FROM user WHERE id='${userId}'`) //mysql中间件无法识别传入参数
-    .then((results) => {
-      console.log('results-login==', results);
-      const [obj] = results
-      const { avatar } = obj
-      res.json({
-        code: 200,
-        message: '成功',
-        data: {
-          ...obj,
-          avatar: avatar ? BaseURL + imgPath + avatar : null
-        }
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  // 新写法
+  const results = await User.findAll({ where: { id: `${userId}` } })
+  console.log('results-login==', results);
+  const [obj = {}] = results
+  const { avatar } = obj
+  res.json({
+    code: 200,
+    message: '成功',
+    data: {
+      ...obj.dataValues,
+      avatar: avatar ? BaseURL + imgPath + avatar : null
+    }
+  })
 })
 
-router.post('/userInfo', function(req, res) {
+router.post('/userInfo', async function (req, res) {
   const userId = req.session.userId
-  dbQueryPromise(`UPDATE user SET signature='${req.body.signature || ''}' WHERE id='${userId}'`) //mysql中间件无法识别传入参数
-    .then(() => {
-      res.json({
-        code: 200,
-        message: '修改成功'
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  await User.update({ signature: `${req.body.signature || ''}` }, { where: { id: `${userId}` } })
+  res.json({
+    code: 200,
+    message: '修改成功'
+  })
 })
 
 module.exports = router

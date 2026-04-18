@@ -2,7 +2,7 @@
 ## 技术栈
 node+express+mysql+sequelize+pm2
 
-## 实现功能点
+## 已实现的功能点
 - 登录
 - 注册
 - 文件上传

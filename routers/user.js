@@ -14,8 +14,7 @@ router.post('/login', async function (req, res) {
   console.log(username, password);
   // 新写法
   const results = await User.findAll({ where: { username: `${username}` } })
-  console.log('results==', results);
-  const [obj] = results
+  const [obj = {}] = results
   if (!results.length) {
     res.json({
       code: 111000,
@@ -34,34 +33,6 @@ router.post('/login', async function (req, res) {
       message: '登录成功'
     })
   }
-
-  // 老写法
-  // dbQueryPromise(`SELECT * FROM user WHERE username='${username}'`) //mysql中间件无法识别传入参数
-  //   .then((results) => {
-  //     console.log('results-login==', results);
-  //     const [obj] = results
-  //     if(!results.length) {
-  //       res.json({
-  //         code: 111000,
-  //         message: '用户名或密码不正确'
-  //       })
-  //     } else if(obj.password !== password) {
-  //       res.json({
-  //         code: 111000,
-  //         message: '用户名或密码不正确'
-  //       })
-  //     } else if(obj.password == password) {
-  //       req.session.userId = obj.id // 每次登录重置id
-  //       req.session.username = obj.username
-  //       res.json({
-  //         code: 200,
-  //         message: '登录成功'
-  //       })
-  //     }
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
 })
 
 router.post('/register', function (req, res) {

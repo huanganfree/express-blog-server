@@ -4,15 +4,17 @@
   "description": "self create server",
   "main": "index.js",
   "scripts": {
-    "start:server": "nodemon --inspect ./bin/www.js",
-    "pm2:development": "pm2 start ecosystem.config.js --env development",
-    "pm2:production": "pm2 start ecosystem.config.js --env production"
+    "start:dev": "cross-env NODE_ENV=development nodemon --inspect ./bin/www.js",
+    "pm2:dev": "pm2 start ecosystem.config.js --env development",
+    "pm2:prod": "pm2 start ecosystem.config.js --env production"
   },
   "author": "ha",
   "license": "ISC",
   "dependencies": {
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.4.2",
     "express": "^4.17.1",
     "express-session": "^1.17.3",
     "fs-extra": "^11.1.1",

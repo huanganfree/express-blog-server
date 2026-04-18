@@ -3,9 +3,13 @@
  * 2.登录失效401，无权限403， 成功200
  * 3.成功为200，其他失败111000
  */
+
+const env = process.env.NODE_ENV
+require('dotenv').config({ path: `.env.${env}` });
+console.log(`当前环境: ${process.env.DB_HOST}`);
+
 const express = require('express')
 const expressSession = require('express-session')
-const cors = require('cors');
 const MemoryStore = require('memorystore')(expressSession)
 
 const userRouter = require('./routers/user')
@@ -16,8 +20,8 @@ const downloadRouter = require('./routers/download')
 const resetPasswordRouter = require('./routers/resetPassword')
 const { auth } = require('./middleware/auth')
 const { port } = require('./utils/globalData')
-const app = express()
 
+const app = express()
 // 开启静态资源服务
 app.use('/public/', express.static('./public/'))
 
@@ -44,9 +48,7 @@ app.use(expressSession({
   }),
 }));
 
-
 app.use('/user', userRouter)
-
 
 // 需要校验登录的路由
 app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter, downloadRouter])
@@ -54,6 +56,5 @@ app.use(auth, [aboutRouter, uploadRouter, userInfoRouter, resetPasswordRouter, d
 app.listen(port, () => {
   console.log(`server is running in ${port}!`);
 })
-
 
 module.exports = app // 导出app对象，便于测试

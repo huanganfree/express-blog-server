@@ -57,4 +57,11 @@ app.listen(port, () => {
   console.log(`server is running in ${port}!`);
 })
 
+
+app.use((err, req, res, next) => {
+  res.status(500).send('全局错误处理!' + err)
+})
+
+
+
 module.exports = app // 导出app对象，便于测试
